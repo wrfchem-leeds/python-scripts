@@ -1,6 +1,6 @@
 # plot-scripts
 
-A collection of scripts that we use for plotting WRF-Chem output. 
+A collection of scripts that we use for processing and plotting WRF-Chem output. 
 
 Scripts should specify what kind of file they act upon, e.g. Is the grid curvilinear or rectilinear?
 
