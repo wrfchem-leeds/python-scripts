@@ -14,12 +14,11 @@ variables = ['PM2_5_DRY', 'o3', 'AOD550_sfc']
 surface_only = 'yes'
 regrid = 'yes'
 
-path = os.getcwd() # run from wrf output/base folder
-filelist = []
-filelist.extend(glob.glob(path + '/wrfout_d0' + domain + '_' + year + '-'+ month + '*'))
-filelist = sorted(filelist)
-
 for domain in domains:
+    path = os.getcwd() # run from wrf output/base folder
+    filelist = []
+    filelist.extend(glob.glob(path + '/wrfout_d0' + domain + '_' + year + '-'+ month + '*'))
+    filelist = sorted(filelist)
     for variable in variables:
         # concatenate
         with salem.open_mf_wrf_dataset(filelist) as ds:
