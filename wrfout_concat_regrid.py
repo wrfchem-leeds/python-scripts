@@ -37,4 +37,4 @@ for domain in domains:
 
         wrf_regrid.to_netcdf(path + '/wrfout_d0' + domain + '_global_' + res +'deg_' + year + '-' + month + '_' + variable + '.nc')
 
-regridder.clean_weight_file()
+    regridder.clean_weight_file()
