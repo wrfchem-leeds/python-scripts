@@ -2,8 +2,20 @@
 from salem import geogrid_simulator
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
+import argparse
 
-namelist_path = '.../namelist.wps' # ensure no comments in namelist
+# calculate map distortion
+parser = argparse.ArgumentParser()
+parser.add_argument("-t", "--tissot", help="display tissot's indicatrix",
+                    action="store_true")
+parser.add_argument("-e", "--etopo", help="display etopo map background",
+                    action="store_true")
+parser.add_argument("-s", "--suggest", help="suggest truelat 1 & 2",
+                    action="store_true")
+args = parser.parse_args()
+
+# plot the wrf domains over a natural earth
+namelist_path = 'demo_files/namelist.wps.demo' # ensure no comments in namelist
 g, maps = geogrid_simulator(namelist_path)
 
 fig = plt.figure(1, figsize=(5, 5))
@@ -13,5 +25,5 @@ maps[0].set_rgb(natural_earth='lr')
 maps[0].visualize()
 
 gs.tight_layout(fig)
-iplt.savefig('wrf_domains.png', dpi=700, alpha=True, bbox_inches='tight')
+plt.savefig('demo_files/wrf_domains.png', dpi=700, alpha=True, bbox_inches='tight')
 plt.show()
