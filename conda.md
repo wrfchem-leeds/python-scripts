@@ -1,6 +1,6 @@
 ### Python setup through conda
 - Download the latest miniconda  
-get https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh  
+`get https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh  `
 - Run bash script, read terms, and set path  
 bash Miniconda3-latest-Linux-x86_64.sh  
 - Create conda environment for python 3 with data science libraries used here  
