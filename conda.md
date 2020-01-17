@@ -8,5 +8,5 @@
 - Activate conda environment  
 `conda activate python3  `
 - Run python ([Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html) is recommended, see this introduction video on [YouTube](https://www.youtube.com/watch?v=A5YyoCKxEOU))  
-`jupyter lab  `
+`jupyter lab  `  
   
