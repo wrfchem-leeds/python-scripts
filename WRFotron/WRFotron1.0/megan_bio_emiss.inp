@@ -1,9 +1,0 @@
-&control
-
-domains = __domains__,
-start_lai_mnth = 1,
-end_lai_mnth   = 12,
-wrf_dir   = '.',
-megan_dir = '__MEGANdir__'
-
-/

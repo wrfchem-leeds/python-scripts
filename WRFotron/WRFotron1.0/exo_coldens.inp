@@ -1,6 +1,0 @@
-&control
-
-wrf_dir = './'
-domains = __domains__,
-
-/
