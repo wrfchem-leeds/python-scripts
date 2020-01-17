@@ -7,8 +7,8 @@ import xesmf as xe
 import numpy as np
 
 year   = '2015' 
-month  = '07'
-res    = '0.25'
+month  = '08'
+res    = 0.25
 domains = ['1', '2']
 variables = ['PM2_5_DRY', 'o3', 'AOD550_sfc']
 surface_only = 'yes'
@@ -27,14 +27,13 @@ for domain in domains:
             else:
                 wrf = ds[variable]
 
-        # regrid, re-using the regridder
-        if (regrid == 'yes') and ('regridder' not in locals()):
-            ds_out = xr.Dataset({'lat': (['lat'], np.arange(-60, 85, float(res))), 'lon': (['lon'], np.arange(-180, 180, float(res))),})
+        # regrid
+        if regrid == 'yes':
+            ds_out = xr.Dataset({'lat': (['lat'], np.arange(-60, 85, 0.25)), 'lon': (['lon'], np.arange(-180, 180, 0.25)),})
             regridder = xe.Regridder(wrf, ds_out, 'bilinear', reuse_weights=True)
             wrf_regrid = regridder(wrf)
-        elif (regrid == 'yes') and ('regridder' in locals()):
-            wrf_regrid = regridder(wrf)
 
-        wrf_regrid.to_netcdf(path + '/wrfout_d0' + domain + '_global_' + res +'deg_' + year + '-' + month + '_' + variable + '.nc')
+        wrf_regrid.to_netcdf(path + '/wrfout_d0' + domain + '_global_'+ str(res) +'deg_' + year + '-' + month + '_' + variable + '.nc')
 
     regridder.clean_weight_file()
+
