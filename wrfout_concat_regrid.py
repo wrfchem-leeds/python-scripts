@@ -21,7 +21,7 @@ for domain in domains:
     filelist = sorted(filelist)
     for variable in variables:
         # concatenate
-        with salem.open_mf_wrf_dataset(filelist) as ds:
+        with salem.open_mf_wrf_dataset(filelist, chunks={'Time': -1}) as ds:
             if (surface_only == 'yes') and (variable == 'PM2_5_DRY') or (variable == 'o3'):
                 wrf = ds[variable].isel(bottom_top=0)
             else:
