@@ -33,11 +33,11 @@ Some example scripts show how to use the wrf-python packages.
 
 ### Plot grids replacements
 
-1. [plot_grids.py](plot_grids.py)
-2. [domain_inspector.py](domain_inspector.py)
+1. [plot_grids.py](plot_grids.py) generic tool to nicely plot domains from geo_em files
+2. [domain_inspector.py](domain_inspector.py) example script to plot domains to inspect topography
 
 ### Quick look results
 
-1. [basic_plots.py](basic_plots.py)
+1. [basic_plots.py](basic_plots.py) based of wrf-python example to plot dewpoint, slp and wind direction using wrf-python diagnostics.
 
 Uses [inbuilt diagnostics available for wrfpython](https://wrf-python.readthedocs.io/en/latest/diagnostics.html). Currently meteorology only focused.
