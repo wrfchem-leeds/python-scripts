@@ -1,75 +1,65 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jan 21 13:32:52 2020
-
-Concatenates a list of wrfout files, then interpolates timeseries at given 
-lat, lon locations
-The wrfout files must have been regridded to a rectilinear grid
-Returns a dataframe with the interpolated timeseries
-
-@author: eebjs
-"""
-
 import xarray as xr
 import pandas as pd
 import numpy as np
 from scipy.interpolate import RegularGridInterpolator
 
-### Inputs ####################################################################
-
-# a list of lat, lon tuples
 locations = [(25, 100), (26, 101), (27, 102), (28, 103), (29, 101), (30, 101)]
-
-# a list of filepaths to regridded wrfout files
 wrfouts = ['/nfs/a68/eebjs/wrfoutput/p2run/202/ctl2016/feb/wrfout_feb2016_ctl_rgdd25.nc',
            '/nfs/a68/eebjs/wrfoutput/p2run/202/ctl2016/mar/wrfout_mar2016_ctl_rgdd25.nc',
            '/nfs/a68/eebjs/wrfoutput/p2run/202/ctl2016/apr/wrfout_apr2016_ctl_rgdd25.nc',
            '/nfs/a68/eebjs/wrfoutput/p2run/202/ctl2016/may/wrfout_may2016_ctl_rgdd25.nc']
-
 #wrfouts = ['/nfs/a336/earlacoa/paper_aia_china/test_file/wrfout_combined-domains_global_0.25deg_2015-01_PM2_5_DRY.nc']
-
-# a string of the data variable that should be extracted from the wrfout file 
 pol = 'PM2_5_DRY'
-
-# an integer representing the model level (z dim) to interpolate at 
 level = 0
 
-# name of co-ordinate used for time dimension
-time = 'Time'
+with xr.open_dataset(wrfouts[0]) as ds:
+    if 'time' in ds[pol].coords:
+        tdim = 'time'
+    elif 'Time' in ds[pol].coords:
+        tdim = 'Time'
 
-###############################################################################
-
-# returns a concatenated data array of the files contained within 
-def get_catda(wrfouts, pol, level):
+def get_catda(wrfouts, pol, level, tdim):
+    """
+    Description:
+        Returns a concatenated data array of the files contained within.
+    Args:    
+        wrfouts (list): List of wrfout files.
+        pol (str): Pollutant.
+        level (int): Model level as an index location.
+        tdim (str): Name of the time dimension.
+    Returns:
+        catda (xarray DataArray): Concatenate data array.
+    """
     da_list = []
     for filepath in wrfouts:
-        
-        ds = xr.open_dataset(filepath)
-        da = ds[pol]
-            
-        # chunk along time dim if length <1 
-        tdim_len = len(da[time])
+        with xr.open_dataset(filepath) as ds:
+            da = ds[pol]
+
+        tdim_len = len(da[tdim])
         if tdim_len > 1:
-            da = da.chunk({time:tdim_len//10})
-        
-        if 'bottom_top' in da.dims:
-            # slice by level
+            da = da.chunk({tdim:tdim_len//10})
+        elif 'bottom_top' in da.dims:
             da = da.loc[{'bottom_top':level}]
-        
+
         da_list.append(da)
-        
-        
-    catda = xr.concat(da_list, dim=time)
+    catda = xr.concat(da_list, dim=tdim)
+    return catda
     
-    return(catda)
-    
-def interpolate_model_timeseries(locations, times='all'):
-    
-    catda = get_catda(wrfouts=wrfouts, pol=pol, level=level)
-    
-    time_coord = np.arange(0, len(catda[time]))
-    
+def interpolate_model_timeseries(locations, tdim, times='all'):
+    """
+    Description:
+        Interpolates timeseries at given lat/lon locations.
+        The wrfout files must be regridded to a rectilinear grid.
+    Args:
+        locations (list of tuples): Observation lat lon locations.
+        tdim (str): Name of the time dimension.
+        times (str, optional): Times of interpolation, default = 'all'.
+    Returns:
+        df (pandas DataFrame): Interpolated timeseries.
+    """
+    catda = get_catda(wrfouts, pol, level, tdim)
+    time_coord = np.arange(0, len(catda[tdim]))
     print('creating interpolator...')
     f = RegularGridInterpolator((time_coord, 
                                  catda.coords['lat'].values,
@@ -77,20 +67,15 @@ def interpolate_model_timeseries(locations, times='all'):
                                  catda.values
                                 )
     print('...done')
-    
-    df = pd.DataFrame(index=catda[time].values)
-    
+    df = pd.DataFrame(index=catda[tdim].values)
     for lat, lon in locations:
         indexer = np.column_stack([time_coord,
                                   [lat]*len(time_coord),
                                   [lon]*len(time_coord)])
-    
-        series = f(indexer)
-        
-        df[(lat,lon)] = series
-        
-    return(df)
 
+        series = f(indexer)
+        df[(lat,lon)] = series
+    return df
 
 if __name__ == '__main__':
-    interpolate_model_timeseries(locations=locations, times='all')
+    df = interpolate_model_timeseries(locations, tdim, times='all')
