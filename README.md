@@ -1,12 +1,18 @@
 ## WRF-Chem, University of Leeds, UK
 ### Python data science scripts
-#### Created by Ben Silver (*eebjs@leeds.ac.uk*) and Luke Conibear (*L.A.Conibear@leeds.ac.uk*).
+#### Contributors
+- Ben Silver (*eebjs@leeds.ac.uk*)  
+- Luke Conibear (*l.a.conibear@leeds.ac.uk*)  
+- Helen Burns (*h.l.burns@leeds.ac.uk*)  
   
 #### Contents
 - Python setup using conda (follow steps in conda.md)  
-- Plot domains from namelist (```python plot_wrf_domains.py```)  
-- Concatenate and regrid WRF-Chem output (```python wrfout_concat_regrid.py```)  
-  
-A collection of scripts that we use for processing and plotting WRF-Chem output.  
-Scripts should specify what kind of file they act upon, e.g. Is the grid curvilinear or rectilinear?  
-Scripts should have a clear description of how to run to produce the output.  
+- Plot domains from namelist (`plot_wrf_domains.py`)  
+- Concatenate and regrid WRF-Chem output (`wrfout_concat_regrid.py`)  
+- Regrid WRF-Chem output and see map distortion (`wrfout_regrid.py`)  
+- Evaluate WRF-Chem output to ground measurements (`interpolated_model_timeseries.py` and `get_modmeas_pickles.py`)  
+- A collection of scripts using the NCAR python package wrf-python, including:  
+  - Example plotting of basic variables (`basic_plots.py`)  
+  - Indepth look at domains (`domain_inspector.py`)  
+  - Generic plot grids tool (`plot_grids.py`)  
+- An alternative to parallelise post.bash (`post.bash_split.py`)  
