@@ -23,7 +23,7 @@ for domain in domains:
     filelist = sorted(filelist)
     for variable in variables:
         with salem.open_mf_wrf_dataset(filelist, chunks={'Time': -1}) as ds:
-            if variable in aerosols:
+            if (surface_only == 'yes') and (variable in aerosols):
                 wrf_a01 = ds[variable + '_a01'].isel(bottom_top=0)
                 wrf_a02 = ds[variable + '_a02'].isel(bottom_top=0)
                 wrf_a03 = ds[variable + '_a03'].isel(bottom_top=0)
