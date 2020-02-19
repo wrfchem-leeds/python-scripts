@@ -22,7 +22,7 @@ for domain in domains:
     filelist.extend(glob.glob(path + '/wrfout_d0' + domain + '_' + year + '-'+ month + '*'))
     filelist = sorted(filelist)
     for variable in variables:
-        with salem.open_mf_wrf_dataset(filelist, chunks={'lat':'auto', 'lon':'auto'}) as ds:
+        with salem.open_mf_wrf_dataset(filelist, chunks={'west_east':'auto', 'south_north':'auto'}) as ds:
             if (surface_only == 'yes') and (variable in aerosols):
                 wrf_a01 = ds[variable + '_a01'].isel(bottom_top=0)
                 wrf_a02 = ds[variable + '_a02'].isel(bottom_top=0)
