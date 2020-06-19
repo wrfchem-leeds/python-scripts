@@ -4,6 +4,7 @@
 - Ben Silver (*eebjs@leeds.ac.uk*)  
 - Luke Conibear (*l.a.conibear@leeds.ac.uk*)  
 - Helen Burns (*h.l.burns@leeds.ac.uk*)  
+- Ailish Graham (*ee15amg@leeds.ac.uk*)  
   
 #### Contents
 - Python setup using conda (follow steps in conda.md)  
@@ -16,3 +17,4 @@
   - Indepth look at domains (`domain_inspector.py`)  
   - Generic plot grids tool (`plot_grids.py`)  
 - An alternative to parallelise post.bash (`post.bash_split.py`)  
+- Script for merging TNO and NAEI emission files (`combine_emissions.py`)  
