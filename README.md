@@ -1,12 +1,11 @@
 ## WRF-Chem, University of Leeds, UK
-### Python data science scripts
+### Python scripts
+
 #### Contributors
-- Ben Silver (*eebjs@leeds.ac.uk*)  
-- Luke Conibear (*l.a.conibear@leeds.ac.uk*)  
-- Helen Burns (*h.l.burns@leeds.ac.uk*)  
-- Ailish Graham (*ee15amg@leeds.ac.uk*)  
+- Ben Silver, Luke Conibear, Helen Burns, and Ailish Graham.  
   
 #### Contents
+- Introduction to Python (created by Luke Conibear) focusing on Python basics, NumPy, Matplotlib, Cartopy, Pandas, GeoPandas, Xarray, WRFChem, and Dask.  
 - Python setup using conda (follow steps in conda.md)  
 - Plot domains from namelist (`plot_wrf_domains.py`)  
 - Concatenate and regrid WRF-Chem output (`wrfout_concat_regrid.py`)  
