@@ -7,7 +7,9 @@ dependencies:
   - _libgcc_mutex=0.1=conda_forge
   - _openmp_mutex=4.5=1_gnu
   - affine=2.3.0=py_0
+  - aiohttp=3.7.2=py37h8f50634_0
   - argon2-cffi=20.1.0=py37h8f50634_2
+  - async-timeout=3.0.1=py_1000
   - async_generator=1.10=py_0
   - attrs=20.2.0=pyh9f0ad1d_0
   - backports=1.0=py_2
@@ -51,6 +53,7 @@ dependencies:
   - fontconfig=2.13.1=h7e3eb15_1002
   - freetype=2.10.4=h7ca028e_0
   - freexl=1.0.5=h516909a_1002
+  - fribidi=1.0.10=h36c2ea0_0
   - fsspec=0.8.4=py_0
   - gdal=3.1.4=py37h2b22b9e_0
   - geopandas=0.8.1=py_0
@@ -61,6 +64,9 @@ dependencies:
   - gettext=0.19.8.1=hf34092f_1004
   - giflib=5.2.1=h36c2ea0_2
   - glib=2.66.2=h58526e2_0
+  - graphite2=1.3.13=h58526e2_1001
+  - graphviz=2.42.3=h0511662_0
+  - harfbuzz=2.7.2=hb1ce69c_1
   - hdf4=4.2.13=hf30be14_1003
   - hdf5=1.10.6=nompi_h54c07f9_1110
   - heapdict=1.0.1=py_0
@@ -117,6 +123,7 @@ dependencies:
   - libssh2=1.9.0=hab1572f_5
   - libstdcxx-ng=9.3.0=h2ae2ef3_17
   - libtiff=4.1.0=h4f3a223_6
+  - libtool=2.4.6=h58526e2_1006
   - libuuid=2.32.1=h14c3975_1000
   - libwebp-base=1.1.0=h36c2ea0_3
   - libxcb=1.13=h14c3975_1002
@@ -130,6 +137,7 @@ dependencies:
   - matplotlib-base=3.3.2=py37hc9afd2a_1
   - mistune=0.8.4=py37h8f50634_1002
   - msgpack-python=1.0.0=py37h99015e2_2
+  - multidict=4.7.5=py37h8f50634_2
   - multipledispatch=0.6.0=py_0
   - munch=2.5.0=py_0
   - nbclient=0.5.1=py_0
@@ -150,6 +158,7 @@ dependencies:
   - pandoc=2.11.0.4=hd18ef5c_0
   - pandocfilters=1.4.2=py_1
   - panel=0.10.1=pyhd8ed1ab_0
+  - pango=1.42.4=h80147aa_5
   - param=1.10.0=py_0
   - partd=1.1.0=py_0
   - pcre=8.44=he1b5a44_0
@@ -179,6 +188,7 @@ dependencies:
   - pysocks=1.7.1=py37he5f6b98_2
   - python=3.7.8=h6f2ec95_1_cpython
   - python-dateutil=2.8.1=py_0
+  - python-graphviz=0.14.2=pyh9f0ad1d_0
   - python_abi=3.7=1_cp37m
   - pytz=2020.4=pyhd8ed1ab_0
   - pyviz_comms=0.7.6=pyh9f0ad1d_0
@@ -207,6 +217,7 @@ dependencies:
   - tornado=6.1=py37h4abf009_0
   - tqdm=4.51.0=pyh9f0ad1d_0
   - traitlets=5.0.5=py_0
+  - typing-extensions=3.7.4.3=0
   - typing_extensions=3.7.4.3=py_0
   - tzcode=2020a=h516909a_0
   - urllib3=1.25.11=py_0
@@ -225,12 +236,15 @@ dependencies:
   - xorg-libxau=1.0.9=h14c3975_0
   - xorg-libxdmcp=1.1.3=h516909a_0
   - xorg-libxext=1.3.4=h516909a_0
+  - xorg-libxpm=3.5.13=h516909a_0
   - xorg-libxrender=0.9.10=h516909a_1002
+  - xorg-libxt=1.1.5=h516909a_1003
   - xorg-renderproto=0.11.1=h14c3975_1002
   - xorg-xextproto=7.3.0=h14c3975_1002
   - xorg-xproto=7.0.31=h14c3975_1007
   - xz=5.2.5=h516909a_1
   - yaml=0.2.5=h516909a_0
+  - yarl=1.6.2=py37h8f50634_0
   - zeromq=4.3.3=he1b5a44_2
   - zict=2.0.0=py_0
   - zipp=3.4.0=py_0
