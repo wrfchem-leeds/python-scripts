@@ -17,3 +17,4 @@
   - Generic plot grids tool (`plot_grids.py`)  
 - An alternative to parallelise post.bash (`post.bash_split.py`)  
 - Script for merging TNO and NAEI emission files (`combine_emissions.py`)  
+- Correct air quality measurements in China due to protocol change (`correct_china_measurements.py`).  
