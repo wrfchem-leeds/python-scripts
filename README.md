@@ -5,7 +5,7 @@
 - Ben Silver, Luke Conibear, Helen Burns, and Ailish Graham.  
   
 #### Contents
-- Introduction to Python (created by Luke Conibear) focusing on Python basics, NumPy, Matplotlib, Cartopy, Pandas, GeoPandas, Xarray, WRFChem, and Dask.  
+- [Introduction to Python](https://www.lukeconibear.com/introduction_to_scientific_computing/index.html) focusing on Python, Linux, and GitHub.  
 - Python setup using conda (follow steps in conda.md)  
 - Plot domains from namelist (`plot_wrf_domains.py`)  
 - Concatenate and regrid WRF-Chem output (`wrfout_concat_regrid.py`)  
