@@ -163,7 +163,9 @@ def correct_for_protocol_change(ds, station):
     for pol in ['CO', 'NO2', 'O3', 'SO2']: 
          C_s = pre_change[pol].values  # conc at standard conditions
          # calculate conc at reference conditions
-         C_r = C_s * (T_s / T_r) 
+         C_r = C_s * (T_s / T_r)
+         # round to 1dp
+         C_r = C_r.round(1)
          # put back into ds
          ds[pol].loc[{'time':slice('2018-09-01')}] = C_r
          
@@ -181,6 +183,8 @@ def correct_for_protocol_change(ds, station):
         T_a = interps.loc[pre_change_index, 't2m']
         # calculate conc at actual conditions
         C_a = C_s * T_s * P_a / (P * T_a)
+        # round to 1dp
+        C_a = C_a.round(1)
         # put back into ds
         ds[pol].loc[{'time':slice('2018-09-01')}] = C_a
         
